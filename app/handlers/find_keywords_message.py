@@ -69,6 +69,9 @@ async def finder(event: events.NewMessage.Event, bot: Bot):
 async def setup_userbot(bot: Bot):
     user_bot = await get_user_bot_by_id()
 
+    if not user_bot:
+        return None
+
     client = TelegramClient('userbot', user_bot.api_id, user_bot.api_hash)
     await client.start()
 
